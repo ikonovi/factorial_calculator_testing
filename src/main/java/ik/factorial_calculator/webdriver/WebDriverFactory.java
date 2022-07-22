@@ -1,5 +1,6 @@
 package ik.factorial_calculator.webdriver;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 public class WebDriverFactory {
@@ -7,6 +8,7 @@ public class WebDriverFactory {
     private WebDriverFactory() {
     }
 
+    @Step("Start browser")
     public static WebDriver getWebDriver(BrowserType type) {
         WebDriver driver;
         if (type == BrowserType.CHROME) {

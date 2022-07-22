@@ -4,6 +4,7 @@ import ik.factorial_calculator.pages.HomePage;
 import ik.factorial_calculator.webdriver.BrowserType;
 import ik.factorial_calculator.webdriver.WebDriverConfigurator;
 import ik.factorial_calculator.webdriver.WebDriverFactory;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 
 public class Application {
@@ -15,11 +16,13 @@ public class Application {
         WebDriverConfigurator.configure(driver);
     }
 
+    @Step("Open application")
     public void open() {
         homePage = new HomePage(driver);
         homePage.load();
     }
 
+    @Step("Calculate factorial")
     public String calculateFactorial(String text) {
         return homePage
                 .enterInteger(text)
@@ -27,6 +30,7 @@ public class Application {
                 .getResultText();
     }
 
+    @Step("Close application")
     public void close() {
         driver.quit();
     }
