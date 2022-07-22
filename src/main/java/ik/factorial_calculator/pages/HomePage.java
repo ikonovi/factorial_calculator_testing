@@ -54,8 +54,8 @@ public class HomePage extends Page implements LoadablePage {
     @Override
     public void isLoaded() throws AssertionError {
         String currentUrl = driver.getCurrentUrl();
-        logger.debug("currentUrl={}", currentUrl);
         if (!currentUrl.contains(AppConfig.BASE_URL)) {
+            logger.debug("currentUrl={}", currentUrl);
             throw new AssertionError("Home page is not loaded.");
         }
     }

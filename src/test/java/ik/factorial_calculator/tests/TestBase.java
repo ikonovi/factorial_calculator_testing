@@ -16,6 +16,6 @@ public abstract class TestBase {
 
     @AfterClass
     public void afterClass() {
-        //app.close();
+        app.close();
     }
 }
