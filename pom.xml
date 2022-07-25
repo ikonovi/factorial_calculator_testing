@@ -13,8 +13,13 @@
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium.version>4.2.1</selenium.version>
-        <testng.version>7.6.1</testng.version>
+        <testng.version>7.4.0</testng.version>
+        <!--
+            Issue: "AllureLifecycle: Could not add attachment: no test is running".
+            FIX: set testng:7.4.0 (not higher) and allure-testng: 2.18.1
+        -->
         <allure-testng.version>2.18.1</allure-testng.version>
+        <allure-maven.version>2.11.2</allure-maven.version>
         <aspectj.version>1.9.9.1</aspectj.version>
         <log4j.version>2.17.2</log4j.version>
     </properties>
@@ -86,6 +91,14 @@
                         <version>${aspectj.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>${allure-maven.version}</version>
+                <configuration>
+                    <reportVersion>2.4.1</reportVersion>
+                </configuration>
             </plugin>
         </plugins>
     </build>

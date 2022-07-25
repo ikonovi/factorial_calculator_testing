@@ -1,4 +1,4 @@
-package ik.factorial_calculator.pages;
+package ik.factorial_calculator.models.pages;
 
 import ik.factorial_calculator.configs.AppConfig;
 import io.qameta.allure.Attachment;
@@ -32,12 +32,14 @@ public class HomePage extends Page implements LoadablePage {
 
     @Step("Enter integer")
     public HomePage enterInteger(String integer) {
+        logger.debug("Enter {}", integer);
         clearAndType(enterIntegerInput, integer);
         return this;
     }
 
     @Step("Click calculate button")
     public HomePage clickCalculate() {
+        logger.debug("Click the Calculate button");
         calculateButton.click();
         return this;
     }
@@ -47,12 +49,14 @@ public class HomePage extends Page implements LoadablePage {
         new WebDriverWait(driver, Duration.ofSeconds(3))
                 .withMessage("Result text is not empty.")
                 .until(webDriver -> resultText.getText().length() > 0);
+        logger.debug("Get the result text on the page: \"{}\"", resultText.getText());
         return resultText.getText();
     }
 
     @Override
     @Step("Load web-page")
     public void load() {
+        logger.debug("Load Home page");
         driver.get(AppConfig.BASE_URL);
         isLoaded();
     }
@@ -60,6 +64,7 @@ public class HomePage extends Page implements LoadablePage {
     @Override
     @Step("Check the page is loaded")
     public void isLoaded() throws AssertionError {
+        logger.debug("Check the Home page is loaded");
         String currentUrl = driver.getCurrentUrl();
         if (!currentUrl.contains(AppConfig.BASE_URL)) {
             logger.debug("currentUrl={}", currentUrl);

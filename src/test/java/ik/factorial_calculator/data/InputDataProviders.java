@@ -2,7 +2,7 @@ package ik.factorial_calculator.data;
 
 import org.testng.annotations.DataProvider;
 
-public class FactorialDataProviders {
+public class InputDataProviders {
 
     @DataProvider(name = "Non-negative integer and n!")
     public static Object[][] validInputData() {
@@ -19,7 +19,7 @@ public class FactorialDataProviders {
     @DataProvider(name = "Invalid input data")
     public static Object[][] invalidInputData() {
         return new String[][]{
-                {"A"}, {"z"}, {""}, {"!"}, {"*"}, {"/>"}, {"--"}, {"'"}, {"<!--"}
+                {"A"}, {"z"}, {""}, {"!"}, {"*"}, {"/>"}, {"--"}, {"'"}, {"<!--"}, {"4"}
         };
     }
 }

@@ -1,7 +1,7 @@
 package ik.factorial_calculator.tests;
 
-import ik.factorial_calculator.data.FactorialDataProviders;
-import ik.factorial_calculator.data.FactorialResultParser;
+import ik.factorial_calculator.data.InputDataProviders;
+import ik.factorial_calculator.data.ResultMessageParser;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.testng.Assert;
@@ -18,13 +18,13 @@ public class CalculatorTests extends TestBase {
         app.open();
     }
 
-    @Test(description = "Test with valid input data",
+        @Test(description = "Test with valid input data",
             dataProvider = "Non-negative integer and n!",
-            dataProviderClass = FactorialDataProviders.class)
+            dataProviderClass = InputDataProviders.class)
     public void testWithValidInputData(String number, String factorial) {
         String resultText = app.calculateFactorial(number);
-        String resultFactorial = FactorialResultParser.getNumberFactorial(resultText);
-        String resultNumber = FactorialResultParser.getNumber(resultText);
+        String resultFactorial = ResultMessageParser.getNumberFactorial(resultText);
+        String resultNumber = ResultMessageParser.getNumber(resultText);
 
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertEquals(resultFactorial, factorial, "factorial of number " + number);
@@ -34,7 +34,7 @@ public class CalculatorTests extends TestBase {
 
     @Test(description = "Test with invalid input data",
             dataProvider = "Invalid input data",
-            dataProviderClass = FactorialDataProviders.class)
+            dataProviderClass = InputDataProviders.class)
     public void testWithInvalidInputData(String text) {
         final String expectedErrorMessage = "Please enter an integer";
         String resultText = app.calculateFactorial(text);

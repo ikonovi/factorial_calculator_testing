@@ -1,4 +1,4 @@
-package ik.factorial_calculator.pages;
+package ik.factorial_calculator.models.pages;
 
 public interface LoadablePage {
     void load();
