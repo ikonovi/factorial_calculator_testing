@@ -17,6 +17,6 @@ public class TestFailureListener implements ITestListener {
         logger.debug("{}", result.getMethod().getMethodName());
         ITestContext testContext = result.getTestContext();
         Screenshot screenshot = (Screenshot) testContext.getAttribute(TESTNG_CONTEXT_ATTR_SCREENSHOT);
-        screenshot.attach();
+        screenshot.attachToAllure();
     }
 }

@@ -17,7 +17,7 @@ public class Screenshot {
         this.driver = driver;
     }
 
-    public void attach() {
+    public void attachToAllure() {
         logger.debug("Attach a screenshot of the page.");
         Allure.addAttachment("Screenshot", new ByteArrayInputStream(((TakesScreenshot) driver)
                 .getScreenshotAs(OutputType.BYTES)));
