@@ -1,8 +1,8 @@
 package ik.factorial_calculator.tests;
 
-import ik.factorial_calculator.listeners.TestFailureListener;
+import ik.factorial_calculator.events.TestFailureListener;
 import ik.factorial_calculator.models.Application;
-import ik.factorial_calculator.report.Screenshot;
+import ik.factorial_calculator.report.AllureScreenshotAttachment;
 import ik.factorial_calculator.webdriver.BrowserType;
 import ik.factorial_calculator.webdriver.WebDriverConfigurator;
 import ik.factorial_calculator.webdriver.WebDriverFactory;
@@ -13,7 +13,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 
-import static ik.factorial_calculator.configs.TestsConfig.TESTNG_CONTEXT_ATTR_SCREENSHOT;
+import static ik.factorial_calculator.configs.TestsConfig.TESTNG_CONTEXT_ATTR_SCREENSHOT_ATTACHMENT;
 
 @Listeners({TestFailureListener.class})
 public abstract class TestBase {
@@ -25,8 +25,8 @@ public abstract class TestBase {
         WebDriver driver = WebDriverFactory.getWebDriver(BrowserType.valueOfCaseInsensitively(browser));
         WebDriverConfigurator.configure(driver);
         app = new Application(driver);
-        Screenshot screenshot = new Screenshot(driver);
-        context.setAttribute(TESTNG_CONTEXT_ATTR_SCREENSHOT, screenshot);
+        AllureScreenshotAttachment screenshot = new AllureScreenshotAttachment(driver);
+        context.setAttribute(TESTNG_CONTEXT_ATTR_SCREENSHOT_ATTACHMENT, screenshot);
     }
 
     @AfterClass

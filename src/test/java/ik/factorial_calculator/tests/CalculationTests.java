@@ -11,7 +11,7 @@ import org.testng.asserts.SoftAssert;
 
 @Epic("Testing online factorial calculator")
 @Feature("Factorial calculation")
-public class CalculatorTests extends TestBase {
+public class CalculationTests extends TestBase {
 
     @BeforeMethod
     public void setUp() {

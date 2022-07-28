@@ -9,17 +9,19 @@ import org.openqa.selenium.WebDriver;
 
 import java.io.ByteArrayInputStream;
 
-public class Screenshot {
+public class AllureScreenshotAttachment implements ReportScreenshotAttachment {
     private static final Logger logger = LogManager.getLogger();
     private final WebDriver driver;
 
-    public Screenshot(WebDriver driver) {
+    public AllureScreenshotAttachment(WebDriver driver) {
         this.driver = driver;
     }
 
-    public void attachToAllure() {
-        logger.debug("Attach a screenshot of the page.");
-        Allure.addAttachment("Screenshot", new ByteArrayInputStream(((TakesScreenshot) driver)
-                .getScreenshotAs(OutputType.BYTES)));
+    @Override
+    public void add(String name) {
+        logger.debug("Attach a screenshot.");
+        ByteArrayInputStream content = new ByteArrayInputStream(((TakesScreenshot) driver)
+                .getScreenshotAs(OutputType.BYTES));
+        Allure.addAttachment(name, content);
     }
 }
